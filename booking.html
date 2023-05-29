@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>ARMO Pay and Go</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">  
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        <!-- Header Start -->
+        <div class="container-fluid bg-dark px-0">
+            <div class="row gx-0">
+                <div class="col-lg-3 bg-dark d-none d-lg-block">
+                    <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                        <h1 class="m-0 text-primary text-uppercase">ARMO</h1>
+                    </a>
+                </div>
+                <div class="col-lg-9">
+                    
+                    <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0">
+                        <a href="index.html" class="navbar-brand d-block d-lg-none">
+                            <h1 class="m-0 text-primary text-uppercase">ARMO</h1>
+                        </a>
+                        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                            <div class="navbar-nav mr-auto py-0">
+                                <a href="index.html" class="nav-item nav-link">Home</a>
+                                <a href="about.html" class="nav-item nav-link">About</a>
+                                <a href="service.html" class="nav-item nav-link">Services</a>
+                                <a href="room.html" class="nav-item nav-link">Rooms</a>
+                                <a href="booking.html" class="nav-item nav-link active">Booking</a>
+                                <a href="contact.html" class="nav-item nav-link">Contact</a>
+                            </div>
+                            <a href="booking.html" class="btn btn-primary rounded-0 py-4 px-md-5 d-none d-lg-block">RENT NOW!<i class="fa fa-arrow-right ms-3"></i></a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+
+
+        <!-- Page Header Start -->
+        <div class="container-fluid page-header mb-5 p-0" style="background-image: url(img/2.jpg);">
+            <div class="container-fluid page-header-inner py-5">
+                <div class="container text-center pb-5">
+                    <h1 class="display-3 text-white mb-3 animated slideInDown">Booking</h1>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Page Header End -->
+
+
+        <!-- Booking Start -->
+        <div class="container-xxl py-5">
+            <div class="bookingcontainer">
+                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class="section-title text-center text-primary text-uppercase">Room Booking</h6>
+                    <h1 class="mb-5">Book A <span class="text-primary text-uppercase">Room</span></h1>
+                </div>
+                <div class="row g-5">
+                    <div class="col-lg-6">
+                        <div class="row g-3">
+                            <div class="col-6 text-end">
+                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.1s" src="img/1.jpg" style="margin-top: 25%;">
+                            </div>
+                            <div class="col-6 text-start">
+                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.3s" src="img/2.jpg">
+                            </div>
+                            <div class="col-6 text-end">
+                                <img class="img-fluid rounded w-50 wow zoomIn" data-wow-delay="0.5s" src="img/3.jpg">
+                            </div>
+                            <div class="col-6 text-start">
+                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.7s" src="img/11.jpg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="wow fadeInUp" data-wow-delay="0.2s">
+                            <form>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                            <label for="name">Your Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                            <label for="email">Your Email</label>
+                                        </div>
+                                    </div>
+									
+                                   <div class="col-12">
+                                        <div class="form-floating">
+                                            <select class="form-select" id="select3">
+									   		  <option value="0"></option>
+                                              <option value="1">Room 7</option>
+                                              <option value="2">Room 8</option>
+                                              <option value="3">Room 9A</option>
+                                              <option value="3">Room 9B</option>
+                                              <option value="3">Room 10</option>
+                                              <option value="3">Room 11</option>
+                                            </select>
+                                            <label for="select3">Select A Room</label>
+                                          </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <select class="form-select" id="select3">
+                                              <option value="1">Gcash</option>
+                                              <option value="2">Pay on Hand</option>
+                                              
+                                            </select>
+                                            <label for="select3">Select Payment Method</label>
+                                          </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <textarea class="form-control" placeholder="Special Request" id="message" style="height: 90px"></textarea>
+                                            <label for="message">Special Request</label>
+                                        </div>
+									<div class="col-12">
+   									 <div class="form-check">
+    									    <input class="form-check-input" type="checkbox" value="" id="termsCheck">
+    									    <label class="form-check-label" for="termsCheck">
+    									        I agree to the <a href="#termsModal" data-bs-toggle="modal">terms and conditions</a>
+    									    </label>
+   									 </div>
+									</div>
+									<div class="col-12">
+  									  <div class="form-check">
+    									    <input class="form-check-input" type="checkbox" value="" id="privacyCheck">
+    									    <label class="form-check-label" for="privacyCheck">
+    									        I accept the <a href="#privacyModal" data-bs-toggle="modal">privacy and data policy</a>
+    									    </label>
+   									 </div>
+									</div>
+									<div class="col-12">
+   									 <button class="btn btn-primary w-100 py-3" type="submit" id="submitButton" disabled>Rent Now</button>
+									</div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Booking End -->
+
+
+        <!-- Newsletter Start -->
+        <div class="container newsletter mt-5 wow fadeIn" data-wow-delay="0.1s">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 border rounded p-1">
+                </div>
+            </div>
+        </div>
+        <!-- Newsletter Start -->
+        
+       
+       <!-- Footer Start -->
+        <div class="container-fluid bg-dark text-light footer wow fadeIn" data-wow-delay="0.1s">
+            <div class="container pb-5">
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="bg-primary rounded p-4">
+                            <a href="index.html"><h1 class="text-white text-uppercase mb-3">Armo Pay and Go</h1></a>
+                            <p class="text-white mb-0">
+								This innovative online platform provides a secure, fast, and reliable payment system that allows users to manage their finances with ease.
+							</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <h6 class="section-title text-start text-primary text-uppercase mb-4">Contact</h6>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i> Tanza, Boac, MARINDUQUE</p>
+                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i> 09561501670</p>
+                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>jezreelnoche16@gmail.com</p>
+                        <div class="d-flex pt-2">
+                            <a class="btn btn-outline-light btn-social" ><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-social" ><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-social" ><i class="fab fa-youtube"></i></a>
+                            <a class="btn btn-outline-light btn-social" ><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-12">
+                        <div class="row gy-5 g-4">
+                            <div class="col-md-6">
+                                <h6 class="section-title text-start text-primary text-uppercase mb-4">ARMO</h6>
+                                <a class="btn btn-link" href="about.html">About Us</a>
+                                <a class="btn btn-link" href="contact.html">Contact Us</a>
+                                <a class="btn btn-link" href="privacyanddata.html">Privacy Policy</a>
+                                <a class="btn btn-link" href="termsandconditions.html">Terms & Condition</a>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="section-title text-start text-primary text-uppercase mb-4">Services</h6>
+                                <a class="btn btn-link" href="service.html">Rooms & Appartment</a>
+                                <a class="btn btn-link" href="service.html">Computer Shop</a>
+                                <a class="btn btn-link" href="service.html">Water Station</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="copyright">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                            &copy; <a class="border-bottom" href="#">Armo Pay and Go</a>, All Right Reserved. 
+							
+							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+							Designed By <a class="border-bottom">Armo Pay and Go Developer</a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+        <!-- Terms and Conditions Modal -->
+        <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="termsModalLabel">Terms and Conditions</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Welcome to ARMO Boarding House website! We provide you with an easy and convenient way to pay your rent or bills. Before you proceed to use our platform, please take a moment to read and understand the following terms and conditions:</p>
+
+                        <ol>
+                            <li>Acceptance of Terms: By accessing or using the ARMO Boarding House website, you agree to be bound by these terms and conditions. If you do not agree with any part of these terms, please do not use our services.</li>
+                            <li>Payment Services: ARMO Pay and Go allows you to make secure payments for your rent and bills through our online platform. We strive to ensure a fast and reliable payment system for your convenience.</li>
+                            <li>User Responsibilities: You are responsible for providing accurate and up-to-date information when using ARMO Pay and Go. It is your responsibility to ensure that your payment details, including bank account information, are correct.</li>
+                            <li>Transparency: ARMO Pay and Go aims to provide transparent services. All fees and charges associated with your payments will be clearly displayed on the dashboard. You will have access to a detailed breakdown of your rental payments and other expenses.</li>
+                            <li>Privacy and Security: We prioritize the privacy and security of your personal information. ARMO Boarding House website implements appropriate measures to protect your data. However, we cannot guarantee the absolute security of information transmitted over the internet, so please use our services at your own risk.</li>
+                            <li>Availability: While we strive to provide uninterrupted services, ARMO Pay and Go may occasionally be unavailable due to maintenance or technical issues. We will make reasonable efforts to minimize any disruptions and notify you in advance whenever possible.</li>
+                            <li>Modification of Services: ARMO Boarding House website reserves the right to modify, suspend, or terminate any aspect of the ARMO Pay and Go services at any time without prior notice. We may also update these terms and conditions from time to time, so please check back periodically for any changes.</li>
+                            <li>Governing Law and Jurisdiction: These terms and conditions shall be governed by and construed in accordance with the laws of the Republic of the Philippines. Any disputes arising out of or in connection with these terms shall be subject to the exclusive jurisdiction of the courts of Tanza, Boac, Marinduque, Philippines.</li>
+                        </ol>
+
+                        <p>This platform operates in compliance with relevant Philippine laws, including but not limited to:</p>
+
+                        <ul>
+                            <li>Republic Act No. 10173, also known as the Data Privacy Act of 2012</li>
+                            <li>Republic Act No. 7394, also known as the Consumer Act of the Philippines</li>
+                            <li>Republic Act No. 8792, also known as the Electronic Commerce Act of 2000</li>
+                        </ul>
+
+                        <p>If you have any questions or concerns regarding these terms and conditions, please contact us through the ARMO Boarding House website.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+        <!-- Privacy and Data Policy Modal -->
+        <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="privacyModalLabel">Privacy and Data Policy</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Privacy and Data Policy content -->
+                        <div>
+                            <h4>Privacy and Data Policy</h4>
+                            <p>At ARMO Boarding House website, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy and Data Policy explains how we collect, use, and safeguard your data when you use our online payment platform.</p>
+                            <h5>1. Information Collection</h5>
+                            <p>We may collect the following types of information when you use ARMO Pay and Go:</p>
+							<ul>
+                                <li>Personal information: Name, email address, contact number, and other relevant details.</li>
+                                <li>Financial information: Payment details, billing address, and transaction history.</li>
+                            </ul>
+                            <h5>2. Use of Information</h5>
+                            <p>We use the collected information for the following purposes:
+                            </p>
+                            <ul>
+                                <li>To process and facilitate your rent and bill payments.</li>
+                                <li>To communicate with you regarding payment confirmations, receipts, and account-related updates.</li>
+                                <li>To improve our services, user experience, and customer support.</li>
+                                <li>To comply with legal obligations and protect against fraudulent activities.</li>
+                            </ul>
+                            <h5>3. Data Security</h5>
+                            <p>We employ industry-standard security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. However, please note that no method of transmission over the internet or electronic storage is 100% secure, and we cannot guarantee absolute security.</p>
+                            <h5>4. Third-Party Disclosure</h5>
+                            <p>We do not sell, trade, or transfer your personal information to outside parties unless necessary for providing our services or as required by law. We may share your information with trusted third-party service providers who assist us in operating our platform, conducting business, and serving you better.</p>
+                            <h5>5. Data Retention</h5>
+                            <p>We retain your personal information only for as long as necessary to fulfill the purposes outlined in this Privacy and Data Policy, unless a longer retention period is required or permitted by law.</p>
+                            <h5>6. User Consent</h5>
+                            <p>By using ARMO Pay and Go, you consent to the collection, use, and storage of your personal information as described in this Privacy and Data Policy.</p>
+                            <h5>7. Updates to the Policy</h5>
+                            <p>We may update this Privacy and Data Policy from time to time to reflect changes in our practices or applicable laws. We encourage you to review this policy periodically.</p>
+                            <p>If you have any questions or concerns regarding our Privacy and Data Policy, please contact us through the ARMO Boarding House website.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+	
+	
+	<!-- Error messages -->
+	<div id="errorMessages" class="alert alert-danger mt-3" style="display: none;">
+    	Please fill in all the required fields.
+	</div>
+
+	<!-- Confirmation message -->
+	<div id="confirmationMessage" class="alert alert-success mt-3" style="display: none;">
+    	Thank you for your booking! We will contact you shortly.
+	</div>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+	
+	
+    <script>
+    // Get the form element
+    var form = document.querySelector('form');
+
+    // Get the form inputs
+    var nameInput = document.getElementById('name');
+    var emailInput = document.getElementById('email');
+    var roomSelect = document.getElementById('select3');
+
+    // Get the checkboxes
+    var termsCheckbox = document.getElementById('termsCheck');
+    var privacyCheckbox = document.getElementById('privacyCheck');
+
+    // Get the submit button
+    var submitButton = document.getElementById('submitButton');
+
+    // Get the error messages element
+    var errorMessages = document.getElementById('errorMessages');
+
+    // Get the confirmation message element
+    var confirmationMessage = document.getElementById('confirmationMessage');
+
+        // Add event listener to the form's submit event
+    form.addEventListener('submit', function(event) {
+        // Check if all required fields are filled
+        if (!nameInput.value || !emailInput.value || roomSelect.selectedIndex === 0 || !termsCheckbox.checked || !privacyCheckbox.checked) {
+            event.preventDefault(); // Prevent form submission
+            errorMessages.style.display = 'block'; // Display error messages
+            // Scroll to the error messages
+            errorMessages.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            // Show confirmation message
+            var confirmationMessage = document.createElement('div');
+            confirmationMessage.className = 'alert alert-success mt-3';
+            confirmationMessage.textContent = 'Thank you for your booking! We will contact you shortly.';
+            form.appendChild(confirmationMessage);
+
+            errorMessages.style.display = 'none'; // Hide error messages
+            form.reset(); // Reset the form
+            event.preventDefault(); // Prevent form submission (for demonstration purposes)
+        }
+    });
+
+    // Add event listeners to the form inputs and checkboxes
+    nameInput.addEventListener('input', enableSubmitButton);
+    emailInput.addEventListener('input', enableSubmitButton);
+    roomSelect.addEventListener('change', enableSubmitButton);
+    termsCheckbox.addEventListener('change', enableSubmitButton);
+    privacyCheckbox.addEventListener('change', enableSubmitButton);
+
+    // Function to enable/disable the submit button
+    function enableSubmitButton() {
+        if (nameInput.value && emailInput.value && roomSelect.selectedIndex !== 0 && termsCheckbox.checked && privacyCheckbox.checked) {
+            submitButton.disabled = false;
+            errorMessages.style.display = 'none'; // Hide error messages
+        } else {
+            submitButton.disabled = true;
+        }
+    }
+    </script>
+
+	
+</body>
+
+</html>

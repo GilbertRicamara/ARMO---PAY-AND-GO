@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Armo Pay and Go</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">  
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+	  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        <!-- Header Start -->
+        <div class="container-fluid bg-dark px-0">
+            <div class="row gx-0">
+                <div class="col-lg-3 bg-dark d-none d-lg-block">
+                    <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                        <h1 class="m-0 text-primary text-uppercase">Armo</h1>
+                    </a>
+                </div>
+                <div class="col-lg-9">
+ 
+                    <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0">
+                        <a href="index.html" class="navbar-brand d-block d-lg-none">
+                            <h1 class="m-0 text-primary text-uppercase">ARMO</h1>
+                        </a>
+                        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                            <div class="navbar-nav mr-auto py-0">
+                                <a href="index.html" class="nav-item nav-link active">Home</a>
+                                <a href="about.html" class="nav-item nav-link">About</a>
+                                <a href="service.html" class="nav-item nav-link">Services</a>
+                                <a href="room.html" class="nav-item nav-link">Rooms</a>
+                                <a href="booking.html" class="nav-item nav-link">Booking</a>
+                                <a href="contact.html" class="nav-item nav-link">Contact</a>
+                            </div>
+                            <a href="booking.html" class="btn btn-primary rounded-0 py-4 px-md-5 d-none d-lg-block">Rent Now!<i class="fa fa-arrow-right ms-3"></i></a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+
+    <!-- Announcement Bar Start -->
+    <div class="announcement-bar">
+        <div id="calendar">
+          <div class="month">
+        <span id="prev-month">&#10094;</span>
+        <span id="current-month"></span>
+        <span id="next-month">&#10095;</span>
+      </div>
+          <table id="calendar-table">
+        <thead>
+          <tr>
+            <th>Sun</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+          </tr>
+        </thead>
+        <tbody id="calendar-body"></tbody>
+      </table>
+        </div>
+        <div class="announcement-log">
+          <h3 id="log-date"></h3>
+          <ul id="announcement-list"></ul>
+          <button id="exit-button" onclick="displayAnnouncements(null)">Exit</button>
+        </div>
+      </div>
+      <script>
+      var announcements = [
+      { date: new Date("2023-05-24"), text: "2023/05/24: Outsiders are strictly prohibited, and fines will be imposed." },
+      { date: new Date("2023-05-20"), text: "2023/05/20: Garbage are collected." },
+      { date: new Date("2023-05-13"), text: "2023/05/13: Water pressure is under maintenance." }
+    ];
+
+var announcementList = document.getElementById("announcement-list");
+var logDate = document.getElementById("log-date");
+var exitButton = document.getElementById("exit-button");
+
+function displayAnnouncements(date) {
+  announcementList.innerHTML = "";
+  exitButton.style.display = "none";
+
+  if (date) {
+    logDate.textContent = formatDate(date);
+    var filteredAnnouncements = announcements.filter(function (announcement) {
+      return date.toDateString() === announcement.date.toDateString();
+    });
+
+    if (filteredAnnouncements.length === 0) {
+      var noAnnouncementItem = document.createElement("li");
+      noAnnouncementItem.textContent = "No announcements for this date.";
+      announcementList.appendChild(noAnnouncementItem);
+    } else {
+      filteredAnnouncements.forEach(function (announcement) {
+        var announcementItem = document.createElement("li");
+        announcementItem.textContent = announcement.text;
+        announcementList.appendChild(announcementItem);
+      });
+    }
+
+    exitButton.style.display = "block";
+  } else {
+    logDate.textContent = "All Announcements:";
+
+    if (announcements.length === 0) {
+      var noAnnouncementItem = document.createElement("li");
+      noAnnouncementItem.textContent = "No announcements.";
+      announcementList.appendChild(noAnnouncementItem);
+    } else {
+      announcements.slice().reverse().forEach(function (announcement) {
+        var announcementItem = document.createElement("li");
+        announcementItem.textContent = announcement.text;
+        announcementList.appendChild(announcementItem);
+      });
+    }
+  }
+}
+
+function formatDate(date) {
+  var options = { year: "numeric", month: "long", day: "numeric" };
+  return date.toLocaleDateString("en-US", options);
+}
+
+function createCalendar(year, month) {
+  var daysInMonth = new Date(year, month + 1, 0).getDate();
+  var firstDay = new Date(year, month, 1).getDay();
+
+  var calendarBody = document.getElementById("calendar-body");
+  calendarBody.innerHTML = "";
+
+  var date = 1;
+  for (var i = 0; i < 6; i++) {
+    var row = document.createElement("tr");
+
+    for (var j = 0; j < 7; j++) {
+      if (i === 0 && j < firstDay) {
+        var cell = document.createElement("td");
+        row.appendChild(cell);
+      } else if (date > daysInMonth) {
+        break;
+      } else {
+        var cell = document.createElement("td");
+        cell.textContent = date;
+
+        // Add class to current date
+        var currentDate = new Date();
+        if (
+          year === currentDate.getFullYear() &&
+          month === currentDate.getMonth() &&
+          date === currentDate.getDate()
+        ) {
+          cell.classList.add("current");
+        }
+
+        // Add class to dates with announcements
+        var announcementDates = announcements.map(function (announcement) {
+          return announcement.date.toDateString();
+        });
+        var cellDate = new Date(year, month, date).toDateString();
+        if (announcementDates.includes(cellDate)) {
+          cell.classList.add("has-announcement");
+        }
+
+        cell.addEventListener("click", function () {
+          var selectedDate = new Date(year, month, this.textContent);
+          displayAnnouncements(selectedDate);
+        });
+
+        row.appendChild(cell);
+        date++;
+      }
+    }
+
+    calendarBody.appendChild(row);
+  }
+}
+
+var currentDate = new Date();
+var currentYear = currentDate.getFullYear();
+var currentMonth = currentDate.getMonth();
+
+document.getElementById("current-month").textContent =
+  new Date(currentYear, currentMonth).toLocaleDateString("en-us", {
+    month: "long",
+    year: "numeric"
+  });
+
+createCalendar(currentYear, currentMonth);
+displayAnnouncements(null);
+
+document.getElementById("prev-month").addEventListener("click", function () {
+  currentMonth--;
+  if (currentMonth < 0) {
+    currentYear--;
+    currentMonth = 11;
+  }
+  document.getElementById("current-month").textContent =
+    new Date(currentYear, currentMonth).toLocaleDateString("en-us", {
+      month: "long",
+      year: "numeric"
+    });
+  createCalendar(currentYear, currentMonth);
+  displayAnnouncements(null);
+});
+
+document.getElementById("next-month").addEventListener("click", function () {
+  currentMonth++;
+  if (currentMonth > 11) {
+    currentYear++;
+    currentMonth = 0;
+  }
+  document.getElementById("current-month").textContent =
+    new Date(currentYear, currentMonth).toLocaleDateString("en-us", {
+      month: "long",
+      year: "numeric"
+    });
+  createCalendar(currentYear, currentMonth);
+  displayAnnouncements(null);
+});
+
+  </script>
+
+        <!-- Carousel Start -->
+        <div class="container-fluid p-0 mb-5">
+            <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="w-100" src="img/2.jpg" alt="Image">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div class="p-3" style="max-width: 700px;">
+                                <h6 class="section-title text-white text-uppercase mb-3 animated slideInDown">Standard Living</h6>
+                                <h1 class="display-3 text-white mb-4 animated slideInDown">The Best Place to Call Home</h1>
+                                <a href="room.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Our Rooms</a>
+                                <a href="booking.html" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Book A Room</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="w-100" src="img/1.jpg" alt="Image">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div class="p-3" style="max-width: 700px;">
+                                <h6 class="section-title text-white text-uppercase mb-3 animated slideInDown">Standard Living</h6>
+                                <h1 class="display-3 text-white mb-4 animated slideInDown">You are on the Right Place</h1>
+                                <a href="room.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Our Rooms</a>
+                                <a href="booking.html" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Book A Room</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <!-- Carousel End -->
+
+
+        <!-- Booking Start -->
+
+        <!-- Booking End -->
+
+
+        <!-- About Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6">
+                        <h6 class="section-title text-start text-primary text-uppercase">About Us</h6>
+                        <h1 class="mb-4">Welcome to <span class="text-primary text-uppercase">Armo</span></h1>
+                        <p class="mb-4">Are you looking for an easy and convenient way to pay your rent or bills? ARMO Boarding House website is the answer! This innovative online platform provides a secure, fast, and reliable payment system that allows users to manage their finances with ease. With ARMO Boarding House website, users can easily keep track of all their rental payments as well as other bills such as utilities. The user-friendly interface makes it simple for anyone to access the site from any device at any time. In addition, there are no hidden fees associated with using this service; everything is transparently displayed on the dashboard so you know exactly how much money you’re spending each month on rent or other expenses.</p>
+                        <div class="row g-3 pb-4">
+                            <div class="col-sm-4 wow fadeIn" data-wow-delay="0.1s">
+                                <div class="border rounded p-1">
+                                    <div class="border rounded text-center p-4">
+                                        <i class="fa fa-hotel fa-2x text-primary mb-2"></i>
+                                        <h2 class="mb-1" data-toggle="counter-up">6</h2>
+                                        <p class="mb-0">Rooms</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 wow fadeIn" data-wow-delay="0.3s">
+                                <div class="border rounded p-1">
+                                    <div class="border rounded text-center p-4">
+                                        <i class="fa fa-users-cog fa-2x text-primary mb-2"></i>
+                                        <h2 class="mb-1" data-toggle="counter-up">2</h2>
+                                        <p class="mb-0">Staffs</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 wow fadeIn" data-wow-delay="0.5s">
+                                <div class="border rounded p-1">
+                                    <div class="border rounded text-center p-4">
+                                        <i class="fa fa-users fa-2x text-primary mb-2"></i>
+                                        <h2 class="mb-1" data-toggle="counter-up">40</h2>
+                                        <p class="mb-0">Clients</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="btn btn-primary py-3 px-5 mt-2" href="about.html">Explore More</a>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row g-3">
+                            <div class="col-6 text-end">
+                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.1s" src="img/1.jpg" style="margin-top: 25%;">
+                            </div>
+                            <div class="col-6 text-start">
+                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.3s" src="img/2.jpg">
+                            </div>
+                            <div class="col-6 text-end">
+                                <img class="img-fluid rounded w-50 wow zoomIn" data-wow-delay="0.5s" src="img/3.jpg">
+                            </div>
+                            <div class="col-6 text-start">
+                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.7s" src="img/1.jpg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- About End -->
+
+
+        <!-- Room Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class="section-title text-center text-primary text-uppercase">Our Rooms</h6>
+                    <h1 class="mb-5">Explore Our <span class="text-primary text-uppercase">Rooms</span></h1>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="room-item shadow rounded overflow-hidden">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="img/4.jpg" alt="">
+                                <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">₱900/Month</small>
+                            </div>
+                            <div class="p-4 mt-2">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <h5 class="mb-0">Room 7</h5>
+                                    <div class="ps-2">
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                        
+                                    </div>
+                                </div>
+                                <div class="d-flex mb-3">
+                                    <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>3 DoubleDeck</small>
+                                    <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>1 Bathroom</small>
+                                    <small><i class="fa fa-toilet text-primary me-2"></i>1 Lavatory</small>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between">
+                                    <a class="btn btn-sm btn-primary rounded py-2 px-4" href="room.html">View Detail</a>
+                                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="booking.html">Rent Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="room-item shadow rounded overflow-hidden">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="img/5.jpg" alt="">
+                                <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">₱900/Month</small>
+                            </div>
+                            <div class="p-4 mt-2">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <h5 class="mb-0">Room 8</h5>
+                                    <div class="ps-2">
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                        
+                                    </div>
+                                </div>
+                                <div class="d-flex mb-3">
+                                    <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>5 DoubleDeck</small>
+                                    <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>2 Bathroom</small>
+                                    <small><i class="fa fa-toilet text-primary me-2"></i>1 Lavatory</small>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between">
+                                    <a class="btn btn-sm btn-primary rounded py-2 px-4" href="room.html">View Detail</a>
+                                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="booking.html">Rent Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="room-item shadow rounded overflow-hidden">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="img/6.jpg" alt="">
+                                <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">₱900/Month</small>
+                            </div>
+                            <div class="p-4 mt-2">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <h5 class="mb-0">Room 9A</h5>
+                                    <div class="ps-2">
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                        
+                                    </div>
+                                </div>
+                                <div class="d-flex mb-3">
+                                    <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>1 DoubleDeck</small>
+                                    <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>1 Bath</small>
+                                    <small><i class="fa fa-toilet text-primary me-2"></i>1 Lavatory</small>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <a class="btn btn-sm btn-primary rounded py-2 px-4" href="room.html">View Detail</a>
+                                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="booking.html">Book Now</a>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="button">
+        	<a class="btn btn-sm btn-dark rounded py-2 px-4" href="room.html">SEE MORE</a>
+        </div>
+        <!-- Room End -->
+
+
+        <!-- Video Start -->
+        <div class="container-xxl py-5 px-0 wow zoomIn" data-wow-delay="0.1s">
+            <div class="row g-0">
+                <div class="col-md-6 bg-dark d-flex align-items-center">
+                    <div class="p-5">
+                        <h6 class="section-title text-start text-white text-uppercase mb-3">Standard Living</h6>
+                        <h1 class="text-white mb-4">Apartment Living at its Best</h1>
+                        <p class="text-white mb-4">ARMO Boarding House provides an invaluable resource for anyone who needs help keeping up with monthly rental payments or bill obligations quickly and securely without having to worry about late fees or penalties down the line—making it one of the most useful tools available today for those wanting better control over their money matters.</p>
+                        <a href="room.html" class="btn btn-primary py-md-3 px-md-5 me-3">Our Rooms</a>
+                        <a href="booking.html" class="btn btn-light py-md-3 px-md-5">Rent A Room</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="img/renna2.jpg" class="img-fluid">
+                </div>
+            </div>
+        </div>
+
+
+        
+        
+
+        <!-- Service Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class="section-title text-center text-primary text-uppercase">Our Services</h6>
+                    <h1 class="mb-5">Explore Our <span class="text-primary text-uppercase">Services</span></h1>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <a class="service-item rounded">
+                            <div class="service-icon bg-transparent border rounded p-1">
+                                <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
+                                    <i class="fa fa-hotel fa-2x text-primary"></i>
+                                </div>
+                            </div>
+                            <h5 class="mb-3">Rooms & Appartment</h5>
+                            <p class="text-body mb-0">Bright and welcoming, each room consists of a living room with a doubledeck, kitchen with sink and dining table, a bathroom and lavatory.</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                        <a class="service-item rounded">
+                            <div class="service-icon bg-transparent border rounded p-1">
+                                <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
+                                    <i class="fa fa-desktop fa-2x text-primary"></i>
+                                </div>
+                            </div>
+                            <h5 class="mb-3">Computer Shop</h5>
+                            <p class="text-body mb-0">“Armo Computer Shop” provides services like xerox, printing, soft binding and book binding at a low price for the students.</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <a class="service-item rounded">
+                            <div class="service-icon bg-transparent border rounded p-1">
+                                <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
+                                    <i class="fa fa-water fa-2x text-primary"></i>
+                                </div>
+                            </div>
+                            <h5 class="mb-3">Water Station</h5>
+                            <p class="text-body mb-0">The Armo Water Refilling Station is responsible in refilling water and providing water supply services to all.</p>
+                        </a>
+                    </div>
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Service End -->
+
+
+        <!-- Testimonial Start -->
+        <div class="container-xxl testimonial mt-5 py-5 bg-dark wow zoomIn" data-wow-delay="0.1s" style="margin-bottom: 90px;">
+            <div class="container">
+                <div class="owl-carousel testimonial-carousel py-5">
+                    <div class="testimonial-item position-relative bg-white rounded overflow-hidden">
+                        <p>"Great dorm space! The rooms are spacious and well-maintained. The common areas are clean and comfortable. Highly recommended!"</p>
+                        <div class="d-flex align-items-center">
+                            <img class="img-fluid flex-shrink-0 rounded" src="img/jez.jpg" style="width: 45px; height: 45px;">
+                            <div class="ps-3">
+                                <h6 class="fw-bold mb-1">Jezrell Noche</h6>
+                                <small>Tenant</small>
+                            </div>
+                        </div>
+                        <i class="fa fa-quote-right fa-3x text-primary position-absolute end-0 bottom-0 me-4 mb-n1"></i>
+                    </div>
+                    <div class="testimonial-item position-relative bg-white rounded overflow-hidden">
+                        <p>"The dorm space is average. The rooms are decently sized, but the common areas could use some improvement in terms of cleanliness and amenities."</p>
+                        <div class="d-flex align-items-center">
+                            <img class="img-fluid flex-shrink-0 rounded" src="img/cat.jpg" style="width: 45px; height: 45px;">
+                            <div class="ps-3">
+                                <h6 class="fw-bold mb-1">Catherine Dela Cruz</h6>
+                                <small>Tenant</small>
+                            </div>
+                        </div>
+                        <i class="fa fa-quote-right fa-3x text-primary position-absolute end-0 bottom-0 me-4 mb-n1"></i>
+                    </div>
+                    <div class="testimonial-item position-relative bg-white rounded overflow-hidden">
+                        <p>Kahanga-hanga! Malalaki at maayos ang mga kuwarto. Malinis at maayos din ang mga common areas. Talagang sulit ang pag-upa dito!"</p>
+                        <div class="d-flex align-items-center">
+                            <img class="img-fluid flex-shrink-0 rounded" src="img/gilbert.jpg" style="width: 45px; height: 45px;">
+                            <div class="ps-3">
+                                <h6 class="fw-bold mb-1">Gilbert Ricamara</h6>
+                                <small>Tenant</small>
+                            </div>
+                        </div>
+                        <i class="fa fa-quote-right fa-3x text-primary position-absolute end-0 bottom-0 me-4 mb-n1"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Testimonial End -->
+
+        <!-- Team Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class="section-title text-center text-primary text-uppercase">The Management</h6>
+                    <h1 class="mb-5">Explore the <span class="text-primary text-uppercase">Owners</span></h1>
+                </div>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="rounded shadow overflow-hidden">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="img/roy.jpg" alt="">
+                                <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
+                                    <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                            <div class="text-center p-4 mt-3">
+                                <h5 class="fw-bold mb-0">Roy Olivar</h5>
+                                <small>Apartment Owner</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="rounded shadow overflow-hidden">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="img/diane.jpg" alt="">
+                                <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
+                                    <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                            <div class="text-center p-4 mt-3">
+                                <h5 class="fw-bold mb-0">Diane Olivar</h5>
+                                <small>Apartment Owner</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Team End -->
+
+
+
+
+        <!-- White Border -->
+        <div class="container newsletter mt-5 wow fadeIn" data-wow-delay="0.1s">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 border rounded p-1">
+                </div>
+            </div>
+        </div>
+        <!-- White Border -->
+        
+
+        <!-- Footer Start -->
+        <div class="container-fluid bg-dark text-light footer wow fadeIn" data-wow-delay="0.1s">
+            <div class="container pb-5">
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="bg-primary rounded p-4">
+                            <a href="index.html"><h1 class="text-white text-uppercase mb-3">Armo Pay and Go</h1></a>
+                            <p class="text-white mb-0">
+								This innovative online platform provides a secure, fast, and reliable payment system that allows users to manage their finances with ease.
+							</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <h6 class="section-title text-start text-primary text-uppercase mb-4">Contact</h6>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i> Tanza, Boac, MARINDUQUE</p>
+                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i> 09561501670</p>
+                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>jezreelnoche16@gmail.com</p>
+                        <div class="d-flex pt-2">
+                            <a class="btn btn-outline-light btn-social" ><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-social" ><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-social" ><i class="fab fa-youtube"></i></a>
+                            <a class="btn btn-outline-light btn-social" ><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-12">
+                        <div class="row gy-5 g-4">
+                            <div class="col-md-6">
+                                <h6 class="section-title text-start text-primary text-uppercase mb-4">ARMO</h6>
+                                <a class="btn btn-link" href="about.html">About Us</a>
+                                <a class="btn btn-link" href="contact.html">Contact Us</a>
+                                <a class="btn btn-link" href="privacyanddata.html">Privacy Policy</a>
+                                <a class="btn btn-link" href="termsandconditions.html">Terms & Condition</a>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="section-title text-start text-primary text-uppercase mb-4">Services</h6>
+                                <a class="btn btn-link" href="service.html">Rooms & Appartment</a>
+                                <a class="btn btn-link" href="service.html">Computer Shop</a>
+                                <a class="btn btn-link" href="service.html">Water Station</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="copyright">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                            &copy; <a class="border-bottom" href="#">Armo Pay and Go</a>, All Right Reserved. 
+							
+							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+							Designed By <a class="border-bottom">Armo Pay and Go Developer</a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
